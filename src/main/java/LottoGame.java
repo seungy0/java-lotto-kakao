@@ -1,13 +1,11 @@
 public class LottoGame {
-    private static final int MINIMUM_PRICE = 1000;
+    private final Cost cost;
 
     public LottoGame(int cost) {
-        validate(cost);
+        this.cost = new Cost(cost);
     }
 
-    private void validate(int cost) {
-        if (cost < MINIMUM_PRICE) {
-            throw new IllegalArgumentException("로또 금액이 부족합니다.");
-        }
+    public int calculateLottoAmount() {
+        return cost.calculateLottoAmount();
     }
 }

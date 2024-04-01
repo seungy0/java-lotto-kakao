@@ -15,4 +15,11 @@ public class LottoTest {
     void validateLottoCost(int cost) {
         Assertions.assertDoesNotThrow(() -> new LottoGame(cost));
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1000, 1500, 1600})
+    void calculateLottoAmount(int cost) {
+        LottoGame lottoGame = new LottoGame(cost);
+        Assertions.assertEquals(1, lottoGame.calculateLottoAmount());
+    }
 }
