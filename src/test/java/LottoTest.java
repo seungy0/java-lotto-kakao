@@ -18,8 +18,8 @@ public class LottoTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1000, 1500, 1600})
-    void calculateLottoAmount(int cost) {
-        LottoGame lottoGame = new LottoGame(cost);
-        Assertions.assertEquals(1, lottoGame.calculateLottoAmount());
+    void calculateLottoAmount(int money) {
+        Cost cost = new Cost(money);
+        Assertions.assertEquals(1, cost.calculateLottoAmount());
     }
 }

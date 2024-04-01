@@ -1,4 +1,5 @@
 public class Cost {
+
     private static final int MINIMUM_PRICE = 1000;
     private static final int LOTTO_PRICE = 1000;
     private final int cost;
