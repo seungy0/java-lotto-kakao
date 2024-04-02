@@ -22,5 +22,7 @@ public class LottoGameController {
 
         List<LottoRank> lottoRanks = lottoGame.calculateResult(winningNumbers, bonusNumber);
         lottoGameView.displayStatistics(lottoGame.calculateStatistics(lottoRanks));
+
+        lottoGameView.displayProfit(lottoGame.calculateProfit(lottoRanks));
     }
 }

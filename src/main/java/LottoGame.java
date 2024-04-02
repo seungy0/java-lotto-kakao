@@ -44,4 +44,10 @@ public class LottoGame {
     public Lottos getLottos() {
         return lottos;
     }
+
+    public Double calculateProfit(List<LottoRank> lottoRanks) {
+        return lottoRanks.stream()
+            .mapToDouble(LottoRank::getPrize)
+            .sum() / cost.getSpent();
+    }
 }

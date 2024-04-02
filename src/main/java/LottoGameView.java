@@ -33,6 +33,7 @@ public class LottoGameView {
         for (Lotto lotto : lottos.getLottos()) {
             System.out.println(lotto.toString());
         }
+        System.out.println();
     }
 
     public List<Integer> requestWinningNumbers() {
@@ -82,6 +83,11 @@ public class LottoGameView {
 
         int count = lottoRanks.getOrDefault(lottoRank, 0);
         System.out.println(
-            lottoRank.getMatchCount() + "개 일치" + (lottoRank.isMatchBonus() ? ", 보너스 볼 일치" : "") + "(" + lottoRank.getPrize() + "원) - " + count + "개");
+            lottoRank.getMatchCount() + "개 일치" + (lottoRank.isMatchBonus() ? ", 보너스 볼 일치" : "")
+                + "(" + lottoRank.getPrize() + "원) - " + count + "개");
+    }
+
+    public void displayProfit(Double profit) {
+        System.out.println("총 수익률은 " + profit + "입니다.");
     }
 }

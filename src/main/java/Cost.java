@@ -18,4 +18,8 @@ public class Cost {
     public int calculateLottoAmount() {
         return cost / LOTTO_PRICE;
     }
+
+    public int getSpent() {
+        return calculateLottoAmount() * LOTTO_PRICE;
+    }
 }
