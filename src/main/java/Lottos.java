@@ -13,7 +13,11 @@ public class Lottos {
         }
     }
 
-    public int size() {
-        return lottos.size();
+    public Lottos(Lottos other) {
+        lottos = new ArrayList<>(other.lottos);
+    }
+
+    public List<Lotto> getLottos() {
+        return new Lottos(this).lottos;
     }
 }

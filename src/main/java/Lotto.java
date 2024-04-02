@@ -21,4 +21,19 @@ public class Lotto {
         numbers = numbers.subList(0, 6);
         Collections.sort(numbers);
     }
+
+    public int getMatchCount(List<Integer> winnerNumbers) {
+        return (int) numbers.stream()
+            .filter(winnerNumbers::contains)
+            .count();
+    }
+
+    public boolean contains(int number) {
+        return numbers.contains(number);
+    }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
 }
