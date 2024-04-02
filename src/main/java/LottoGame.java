@@ -6,15 +6,12 @@ import java.util.Map;
 public class LottoGame {
 
     private final Cost cost;
-    private Lottos lottos;
+    private final Lottos lottos;
 
-    public LottoGame(int cost) {
+    public LottoGame(int cost, NumberGenerator numberGenerator) {
         this.cost = new Cost(cost);
-    }
-
-    public void makeLottos() {
         int amounts = calculateLottoAmount();
-        lottos = new Lottos(amounts);
+        lottos = new Lottos(amounts, numberGenerator);
     }
 
     public int calculateLottoAmount() {

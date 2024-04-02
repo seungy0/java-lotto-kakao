@@ -9,9 +9,9 @@ public class LottoGameController {
     }
 
     public void playGame() {
-        LottoGame lottoGame = new LottoGame(lottoGameView.requestCost());
+        LottoGame lottoGame = new LottoGame(lottoGameView.requestCost(),
+            new RandomNumberGenerator());
 
-        lottoGame.makeLottos();
         lottoGameView.displayLottoAmount(lottoGame.calculateLottoAmount());
 
         Lottos lottos = lottoGame.getLottos();

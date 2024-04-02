@@ -5,11 +5,11 @@ public class Lottos {
 
     private final List<Lotto> lottos;
 
-    public Lottos(int amount) {
+    public Lottos(int amount, NumberGenerator numberGenerator) {
         lottos = new ArrayList<>();
 
         for (int i = 0; i < amount; i++) {
-            lottos.add(new Lotto());
+            lottos.add(new Lotto(numberGenerator));
         }
     }
 
