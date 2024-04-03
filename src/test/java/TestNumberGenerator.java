@@ -1,4 +1,5 @@
 import java.util.List;
+import util.NumberGenerator;
 
 public class TestNumberGenerator implements NumberGenerator {
 

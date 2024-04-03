@@ -1,9 +1,14 @@
+package view;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import model.Lotto;
+import model.LottoRank;
+import model.Lottos;
 
 public class LottoGameView {
 
