@@ -1,8 +1,9 @@
 package util;
 
-import java.util.List;
+import java.util.Set;
+import model.LottoNumber;
 
 public interface NumberGenerator {
 
-    List<Integer> generateNumbers();
+    Set<LottoNumber> generateNumbers();
 }

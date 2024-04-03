@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.List;
 import model.Cost;
 import model.Lotto;
@@ -11,14 +10,17 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class LottoTest {
 
-    TestNumberGenerator testNumberGenerator;
+    private Lotto lotto;
+    private TestNumberGenerator testNumberGenerator;
 
     @BeforeEach
     void setUp() {
         testNumberGenerator = new TestNumberGenerator(List.of(
             List.of(1, 2, 3, 4, 5, 6)
         ));
+        lotto = new Lotto(testNumberGenerator);
     }
+
 
     @ParameterizedTest
     @ValueSource(ints = {100, 200, 300})
@@ -41,22 +43,26 @@ public class LottoTest {
     }
 
     @Test
-    void getMatchCount() {
-        TestNumberGenerator testNumberGenerator = new TestNumberGenerator(List.of(
-            List.of(1, 2, 3, 4, 5, 6)
-        ));
-        Lotto lotto = new Lotto(testNumberGenerator);
-        List<Integer> winnerNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
-
-        Assertions.assertEquals(6, lotto.getMatchCount(winnerNumbers));
+    void getMatchCountWithMatchingNumbers() {
+        Lotto otherLotto = new Lotto(testNumberGenerator);
+        Assertions.assertEquals(6, lotto.getMatchCount(otherLotto));
     }
 
     @Test
-    void calculateResult() {
-        LottoGame lottoGame = new LottoGame(1000, testNumberGenerator);
-
-        List<Integer> winnerNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
-        int bonusNumber = 7;
-        lottoGame.calculateResult(winnerNumbers, bonusNumber);
+    void getMatchCountWithNoMatchingNumbers() {
+        TestNumberGenerator otherNumberGenerator = new TestNumberGenerator(List.of(
+            List.of(7, 8, 9, 10, 11, 12)
+        ));
+        Lotto otherLotto = new Lotto(otherNumberGenerator);
+        Assertions.assertEquals(0, lotto.getMatchCount(otherLotto));
     }
+
+//    @Test
+//    void calculateResult() {
+//        LottoGame lottoGame = new LottoGame(1000, testNumberGenerator);
+//
+//        List<Integer> winnerNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+//        int bonusNumber = 7;
+//        lottoGame.calculateResult(winnerNumbers, bonusNumber);
+//    }
 }

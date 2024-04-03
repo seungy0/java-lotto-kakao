@@ -4,6 +4,7 @@ import java.util.List;
 import model.LottoGame;
 import model.LottoRank;
 import model.Lottos;
+import model.WinnerLottoNumber;
 import util.RandomNumberGenerator;
 import view.LottoGameView;
 
@@ -27,9 +28,10 @@ public class LottoGameController {
         List<Integer> winningNumbers = lottoGameView.requestWinningNumbers();
         int bonusNumber = lottoGameView.requestBonusNumber();
 
-        List<LottoRank> lottoRanks = lottoGame.calculateResult(winningNumbers, bonusNumber);
-        lottoGameView.displayStatistics(lottoGame.calculateStatistics(lottoRanks));
+        WinnerLottoNumber winnerLottoNumber = WinnerLottoNumber.of(winningNumbers, bonusNumber);
 
+        List<LottoRank> lottoRanks = lottoGame.calculateResult(winnerLottoNumber);
+        lottoGameView.displayStatistics(lottoGame.calculateStatistics(lottoRanks));
         lottoGameView.displayProfit(lottoGame.calculateProfit(lottoRanks));
     }
 }

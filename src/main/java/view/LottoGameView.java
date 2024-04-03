@@ -82,7 +82,7 @@ public class LottoGameView {
     }
 
     private static void displayStatistic(Map<LottoRank, Integer> lottoRanks, LottoRank lottoRank) {
-        if (lottoRank == LottoRank.FAIL) {
+        if (lottoRank == LottoRank.NONE) {
             return;
         }
 

@@ -1,4 +1,7 @@
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+import model.LottoNumber;
 import util.NumberGenerator;
 
 public class TestNumberGenerator implements NumberGenerator {
@@ -10,7 +13,12 @@ public class TestNumberGenerator implements NumberGenerator {
         this.candidates = candidates;
     }
 
-    public List<Integer> generateNumbers() {
-        return candidates.get(currentIndex++ % candidates.size());
+    public Set<LottoNumber> generateNumbers() {
+        List<Integer> numbers = candidates.get(currentIndex % candidates.size());
+        currentIndex++;
+
+        return numbers.stream()
+            .map(LottoNumber::new)
+            .collect(Collectors.toSet());
     }
 }

@@ -21,12 +21,12 @@ public class LottoGame {
         return cost.calculateLottoAmount();
     }
 
-    public List<LottoRank> calculateResult(List<Integer> winnerNumbers, int bonusNumber) {
+    public List<LottoRank> calculateResult(WinnerLottoNumber winnerLottoNumber) {
         List<LottoRank> lottoRanks = new ArrayList<>();
 
         for (Lotto lotto : lottos.getLottos()) {
-            int matchCount = lotto.getMatchCount(winnerNumbers);
-            boolean matchBonus = lotto.contains(bonusNumber);
+            int matchCount = winnerLottoNumber.getMatchCount(lotto);
+            boolean matchBonus = winnerLottoNumber.getMatchBonus(lotto);
             lottoRanks.add(LottoRank.of(matchCount, matchBonus));
         }
         return lottoRanks;
