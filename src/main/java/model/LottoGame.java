@@ -21,7 +21,6 @@ public class LottoGame {
         return cost.calculateLottoAmount();
     }
 
-    // TODO: Test 코드 작성
     public List<LottoRank> calculateResult(List<Integer> winnerNumbers, int bonusNumber) {
         List<LottoRank> lottoRanks = new ArrayList<>();
 
