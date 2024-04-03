@@ -9,12 +9,13 @@ import model.LottoNumber;
 
 public class RandomNumberGenerator implements NumberGenerator {
 
+    private static final List<Integer> NUMBERS = IntStream.rangeClosed(1, 45)
+        .boxed()
+        .collect(Collectors.toList());
+
     public Set<LottoNumber> generateNumbers() {
-        List<Integer> numbers = IntStream.rangeClosed(1, 45)
-            .boxed()
-            .collect(Collectors.toList());
-        Collections.shuffle(numbers);
-        return numbers.stream()
+        Collections.shuffle(NUMBERS);
+        return NUMBERS.stream()
             .limit(6)
             .map(LottoNumber::new)
             .collect(Collectors.toSet());
