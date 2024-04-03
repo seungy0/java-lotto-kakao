@@ -46,8 +46,8 @@ public class LottoGameView {
         String input = sc.nextLine();
 
         try {
-            // TODO: 1부터 45까지 중복되지 않은 수 있는지 확인
             return Arrays.stream(input.split(","))
+                .map(String::trim)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
         } catch (NumberFormatException e) {
