@@ -1,6 +1,7 @@
 package model;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class WinnerLottoNumber {
 
@@ -16,11 +17,17 @@ public class WinnerLottoNumber {
         return new WinnerLottoNumber(Lotto.of(numbers), bonusNumber);
     }
 
-    public int getMatchCount(Lotto lotto) {
+    public List<LottoRank> calculateRanks(Lottos lottos) {
+        return lottos.getLottos().stream()
+            .map(lotto -> LottoRank.of(getMatchCount(lotto), getMatchBonus(lotto)))
+            .collect(Collectors.toList());
+    }
+
+    private int getMatchCount(Lotto lotto) {
         return this.lotto.getMatchCount(lotto);
     }
 
-    public boolean getMatchBonus(Lotto lotto) {
+    private boolean getMatchBonus(Lotto lotto) {
         return lotto.contains(bonusNumber);
     }
 }

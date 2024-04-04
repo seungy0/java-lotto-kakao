@@ -1,6 +1,5 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,14 +21,7 @@ public class LottoGame {
     }
 
     public List<LottoRank> calculateResult(WinnerLottoNumber winnerLottoNumber) {
-        List<LottoRank> lottoRanks = new ArrayList<>();
-
-        for (Lotto lotto : lottos.getLottos()) {
-            int matchCount = winnerLottoNumber.getMatchCount(lotto);
-            boolean matchBonus = winnerLottoNumber.getMatchBonus(lotto);
-            lottoRanks.add(LottoRank.of(matchCount, matchBonus));
-        }
-        return lottoRanks;
+        return winnerLottoNumber.calculateRanks(lottos);
     }
 
     public Map<LottoRank, Integer> calculateStatistics(List<LottoRank> lottoRanks) {
