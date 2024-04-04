@@ -16,6 +16,16 @@ public class LottoGame {
         lottos = new Lottos(amounts, numberGenerator);
     }
 
+    public LottoGame(int cost, int manualLottoAmount, List<List<Integer>> manualLottoNumbers,
+        NumberGenerator numberGenerator) {
+        this.cost = new Cost(cost);
+        int amounts = calculateLottoAmount() - manualLottoAmount;
+        lottos = new Lottos(amounts, numberGenerator);
+        for (List<Integer> numbers : manualLottoNumbers) {
+            lottos.addManualLotto(numbers);
+        }
+    }
+
     public int calculateLottoAmount() {
         return cost.calculateLottoAmount();
     }
