@@ -5,8 +5,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.stream.Collectors;
 import model.Lotto;
+import model.LottoNumber;
 import model.LottoRank;
 import model.Lottos;
 
@@ -36,7 +38,8 @@ public class LottoGameView {
 
     public void displayLottos(Lottos lottos) {
         for (Lotto lotto : lottos.getLottos()) {
-            System.out.println(lotto.toString());
+            Set<LottoNumber> numbers = lotto.getNumbers();
+            displayLotto(numbers);
         }
         System.out.println();
     }
@@ -81,6 +84,10 @@ public class LottoGameView {
         }
     }
 
+    public void displayProfit(Double profit) {
+        System.out.println("총 수익률은 " + profit + "입니다.");
+    }
+
     private static void displayStatistic(Map<LottoRank, Integer> lottoRanks, LottoRank lottoRank) {
         if (lottoRank == LottoRank.NONE) {
             return;
@@ -92,7 +99,11 @@ public class LottoGameView {
                 + "(" + lottoRank.getPrize() + "원) - " + count + "개");
     }
 
-    public void displayProfit(Double profit) {
-        System.out.println("총 수익률은 " + profit + "입니다.");
+    private void displayLotto(Set<LottoNumber> numbers) {
+        System.out.println(numbers.stream()
+            .map(LottoNumber::getNumber)
+            .sorted()
+            .map(String::valueOf)
+            .collect(Collectors.joining(", ", "[", "]")));
     }
 }

@@ -35,11 +35,7 @@ public class Lotto {
         return new Lotto(LottoNumber.of(numbers));
     }
 
-    @Override
-    public String toString() {
-        return numbers.stream()
-            .sorted()
-            .map(LottoNumber::toString)
-            .collect(java.util.stream.Collectors.joining(", ", "[", "]"));
+    public Set<LottoNumber> getNumbers() {
+        return numbers;
     }
 }
