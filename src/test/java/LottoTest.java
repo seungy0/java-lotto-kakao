@@ -56,13 +56,4 @@ public class LottoTest {
         Lotto otherLotto = new Lotto(otherNumberGenerator);
         Assertions.assertEquals(0, lotto.getMatchCount(otherLotto));
     }
-
-//    @Test
-//    void calculateResult() {
-//        LottoGame lottoGame = new LottoGame(1000, testNumberGenerator);
-//
-//        List<Integer> winnerNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
-//        int bonusNumber = 7;
-//        lottoGame.calculateResult(winnerNumbers, bonusNumber);
-//    }
 }
