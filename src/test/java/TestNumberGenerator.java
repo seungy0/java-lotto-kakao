@@ -18,7 +18,7 @@ public class TestNumberGenerator implements NumberGenerator {
         currentIndex++;
 
         return numbers.stream()
-            .map(LottoNumber::new)
+            .map(LottoNumber::of)
             .collect(Collectors.toSet());
     }
 }
