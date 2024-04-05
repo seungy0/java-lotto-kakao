@@ -10,14 +10,19 @@ import org.junit.jupiter.api.Test;
 public class LottoGameTest {
 
     private LottoGame lottoGame;
-    private TestNumberGenerator testNumberGenerator;
 
     @BeforeEach
     void setUp() {
-        testNumberGenerator = new TestNumberGenerator(List.of(
-            List.of(1, 2, 3, 4, 5, 6)
+        // 자동 로또 번호
+        TestNumberGenerator testNumberGenerator = new TestNumberGenerator(List.of(
+            List.of(7, 8, 9, 10, 11, 12) // 자동 로또 번호
         ));
-        lottoGame = new LottoGame(1000, testNumberGenerator);
+        lottoGame = new LottoGame(
+            2000,
+            1,
+            List.of(List.of(1, 2, 3, 4, 5, 6)),
+            testNumberGenerator
+        );
     }
 
     @Test
@@ -27,7 +32,7 @@ public class LottoGameTest {
 
     @Test
     void calculateLottoAmountWithValidCost() {
-        Assertions.assertEquals(1, lottoGame.calculateLottoAmount());
+        Assertions.assertEquals(2, lottoGame.calculateLottoAmount());
     }
 
     @Test
@@ -69,13 +74,13 @@ public class LottoGameTest {
         WinnerLottoNumber winnerLottoNumber = WinnerLottoNumber.of(List.of(1, 2, 3, 4, 5, 6), 7);
         List<LottoRank> lottoRanks = lottoGame.calculateResult(winnerLottoNumber);
         double profit = lottoGame.calculateProfit(lottoRanks);
-        Assertions.assertEquals(2000000, profit);
+        Assertions.assertEquals(1000000, profit);
     }
 
     @Test
     void calculateProfitWithNoMatchingNumbers() {
-        WinnerLottoNumber winnerLottoNumber = WinnerLottoNumber.of(List.of(7, 8, 9, 10, 11, 12),
-            13);
+        WinnerLottoNumber winnerLottoNumber = WinnerLottoNumber.of(List.of(13, 14, 15, 16, 17, 18),
+            19);
         List<LottoRank> lottoRanks = lottoGame.calculateResult(winnerLottoNumber);
         double profit = lottoGame.calculateProfit(lottoRanks);
         Assertions.assertEquals(0, profit);

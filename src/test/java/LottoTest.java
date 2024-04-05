@@ -30,13 +30,13 @@ public class LottoTest {
     @ValueSource(ints = {100, 200, 300})
     void validateLottoInvalidCost(int cost) {
         Assertions.assertThrows(IllegalArgumentException.class,
-            () -> new LottoGame(cost, testNumberGenerator));
+            () -> new LottoGame(cost, 0, List.of(), testNumberGenerator));
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1000, 1500, 2000})
     void validateLottoCost(int cost) {
-        Assertions.assertDoesNotThrow(() -> new LottoGame(cost, testNumberGenerator));
+        Assertions.assertDoesNotThrow(() -> new LottoGame(cost, 0, List.of(), testNumberGenerator));
     }
 
     @ParameterizedTest
@@ -63,7 +63,8 @@ public class LottoTest {
 
     @Test
     public void ofThrowsExceptionWhenNumbersAreDuplicated() {
-        assertThrows(IllegalArgumentException.class, () -> Lotto.of(Arrays.asList(1, 1, 2, 3, 4, 5)));
+        assertThrows(IllegalArgumentException.class,
+            () -> Lotto.of(Arrays.asList(1, 1, 2, 3, 4, 5)));
     }
 
     @Test

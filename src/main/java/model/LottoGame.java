@@ -10,12 +10,6 @@ public class LottoGame {
     private final Cost cost;
     private final Lottos lottos;
 
-    public LottoGame(int cost, NumberGenerator numberGenerator) {
-        this.cost = new Cost(cost);
-        int amounts = calculateLottoAmount();
-        lottos = new Lottos(amounts, numberGenerator);
-    }
-
     public LottoGame(int cost, int manualLottoAmount, List<List<Integer>> manualLottoNumbers,
         NumberGenerator numberGenerator) {
         this.cost = new Cost(cost);
