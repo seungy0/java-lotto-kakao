@@ -1,3 +1,7 @@
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import model.Cost;
 import model.Lotto;
@@ -55,5 +59,15 @@ public class LottoTest {
         ));
         Lotto otherLotto = new Lotto(otherNumberGenerator);
         Assertions.assertEquals(0, lotto.getMatchCount(otherLotto));
+    }
+
+    @Test
+    public void ofThrowsExceptionWhenNumbersAreDuplicated() {
+        assertThrows(IllegalArgumentException.class, () -> Lotto.of(Arrays.asList(1, 1, 2, 3, 4, 5)));
+    }
+
+    @Test
+    public void ofThrowsExceptionWhenNumbersAreLessThanSix() {
+        assertThrows(IllegalArgumentException.class, () -> Lotto.of(Collections.singletonList(1)));
     }
 }
