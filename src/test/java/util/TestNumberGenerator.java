@@ -1,8 +1,9 @@
+package util;
+
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import model.LottoNumber;
-import util.NumberGenerator;
 
 public class TestNumberGenerator implements NumberGenerator {
 
