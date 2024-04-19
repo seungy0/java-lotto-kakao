@@ -4,6 +4,7 @@ import java.util.List;
 import model.LottoGame;
 import model.LottoRank;
 import model.WinnerLottoNumber;
+import util.ManualNumberGenerator;
 import util.RandomNumberGenerator;
 import view.LottoGameView;
 
@@ -16,10 +17,12 @@ public class LottoGameController {
     }
 
     public void playGame() {
+        int manualLottoAmount = lottoGameView.requestManualLottoAmount();
+
         LottoGame lottoGame = new LottoGame(
             lottoGameView.requestCost(),
-            lottoGameView.requestManualLottoAmount(),
-            lottoGameView.requestManualLottoNumbers(lottoGameView.requestManualLottoAmount()),
+            manualLottoAmount,
+            new ManualNumberGenerator(lottoGameView.requestManualLottoNumbers(manualLottoAmount)),
             new RandomNumberGenerator()
         );
 

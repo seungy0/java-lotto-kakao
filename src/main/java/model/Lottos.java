@@ -24,7 +24,8 @@ public class Lottos {
         return new Lottos(this).lottos;
     }
 
-    public void addManualLotto(List<Integer> numbers) {
-        lottos.add(Lotto.of(numbers));
+    public Lottos add(Lottos other) {
+        lottos.addAll(other.lottos);
+        return this;
     }
 }
